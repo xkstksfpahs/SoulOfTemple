@@ -9,7 +9,7 @@ public class GameSetComponent : MonoBehaviour
     [SerializeField] bool[] test;
     [SerializeField] GameObject[] stars;
     [SerializeField] GameObject button;
-    [SerializeField] int stageNumber;
+    public int stageNumber;
     float setTime = 1f;
     float getTime;
     bool triggerStart = false, isC, isL, isI;

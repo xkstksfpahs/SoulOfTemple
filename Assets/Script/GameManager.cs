@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     public bool isItem = false;
     public bool esc = false;
     bool escSet = false;
+    string ReRound;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +27,7 @@ public class GameManager : MonoBehaviour
         spawnPoint = GameObject.FindGameObjectWithTag("SpawnPoint");
         gameSetUI.transform.rotation = Quaternion.Euler(90, 0, 0);
         escUI.transform.rotation = Quaternion.Euler(90, 0, 0);
+        ReRound = "Stage" + gameSetUI.GetComponent<GameSetComponent>().stageNumber.ToString();
     }
 
     // Update is called once per frame
@@ -116,5 +118,9 @@ public class GameManager : MonoBehaviour
     {
         esc = false;
         escSet = true;
+    }
+    public void ReStartGame()
+    {
+        LoadingSceneController.LoadScene(ReRound);
     }
 }

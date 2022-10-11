@@ -1314,7 +1314,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 1669726845}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1398636143}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 88adc7cfbff9f0643b07b2b37e056ad6, type: 3}
@@ -2415,6 +2415,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5070842723453423596, guid: 558a82ecdfb6a3e4d815135747241b64,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 657960255}
+    - target: {fileID: 5070842723453423596, guid: 558a82ecdfb6a3e4d815135747241b64,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ReStartGame
+      objectReference: {fileID: 0}
     - target: {fileID: 5070842723764389366, guid: 558a82ecdfb6a3e4d815135747241b64,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -2429,7 +2439,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1398636143}
+      objectReference: {fileID: 657960255}
     - target: {fileID: 5070842724702777994, guid: 558a82ecdfb6a3e4d815135747241b64,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -2916,12 +2926,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: afcd280f209b43c44af2cc0a479da518, type: 3}
---- !u!1 &1398636143 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6704981746873282612, guid: 0f15ef5b0ddfdb5469303ba24d26872e,
-    type: 3}
-  m_PrefabInstance: {fileID: 1669726845}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1439441381 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2649822133136414918, guid: afcd280f209b43c44af2cc0a479da518,

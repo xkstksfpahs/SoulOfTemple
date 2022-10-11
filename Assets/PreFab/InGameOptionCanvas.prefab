@@ -1070,7 +1070,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "\uBAA9\uD45C \uD655\uC778 (\uBBF8\uAD6C\uD604)"
+  m_Text: "\uC7AC\uC2DC\uC791"
 --- !u!1 &5070842723226290430
 GameObject:
   m_ObjectHideFlags: 0
@@ -1572,7 +1572,7 @@ GameObject:
   - component: {fileID: 5070842723453423595}
   - component: {fileID: 5070842723453423596}
   m_Layer: 5
-  m_Name: point
+  m_Name: ReStart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1677,7 +1677,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5070842723453423595}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_MethodName: ReStartGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5070842723477917791
 GameObject:
   m_ObjectHideFlags: 0
@@ -3083,11 +3094,11 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
-        m_MethodName: 
+        m_MethodName: ReStartGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -3844,7 +3855,7 @@ MonoBehaviour:
   - {fileID: 5070842722822555942}
   - {fileID: 5070842723477917791}
   button: {fileID: 5070842723059002281}
-  stageNumber: 2
+  stageNumber: 1
 --- !u!1 &5070842724313317375
 GameObject:
   m_ObjectHideFlags: 0

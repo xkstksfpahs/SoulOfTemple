@@ -2338,12 +2338,12 @@ Transform:
   - {fileID: 661245710}
   - {fileID: 134939763}
   - {fileID: 1943782970}
-  - {fileID: 1794297999}
   - {fileID: 1289581886}
   - {fileID: 1928338371}
   - {fileID: 416996801}
   - {fileID: 62509364}
   - {fileID: 1983007664}
+  - {fileID: 1794297999}
   - {fileID: 1037908957}
   - {fileID: 2015309729}
   - {fileID: 1518190158}
@@ -2532,6 +2532,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5070842723453423596, guid: 558a82ecdfb6a3e4d815135747241b64,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2005072705}
+    - target: {fileID: 5070842723453423596, guid: 558a82ecdfb6a3e4d815135747241b64,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ReStartGame
+      objectReference: {fileID: 0}
     - target: {fileID: 5070842723769293259, guid: 558a82ecdfb6a3e4d815135747241b64,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -2541,6 +2551,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: ExitStage
+      objectReference: {fileID: 0}
+    - target: {fileID: 5070842724028248288, guid: 558a82ecdfb6a3e4d815135747241b64,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2005072705}
+    - target: {fileID: 5070842724028248288, guid: 558a82ecdfb6a3e4d815135747241b64,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ReStartGame
       objectReference: {fileID: 0}
     - target: {fileID: 5070842724266143236, guid: 558a82ecdfb6a3e4d815135747241b64,
         type: 3}
