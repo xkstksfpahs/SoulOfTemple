@@ -9,6 +9,7 @@ public class LoadingSceneController : MonoBehaviour
     static string nextScene;
 
     [SerializeField] Image progressBar;
+    JukeBox jb;
 
     public static void LoadScene(string sceneName)
     {
@@ -18,6 +19,7 @@ public class LoadingSceneController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        jb = GameObject.Find("JukeBox").GetComponent<JukeBox>();
         StartCoroutine(LoadSceneProcess());
     }
 
@@ -37,11 +39,12 @@ public class LoadingSceneController : MonoBehaviour
             }
             else
             {
-                Timer += Time.unscaledDeltaTime;
+                Timer += Time.unscaledDeltaTime/2;
                 progressBar.fillAmount = Mathf.Lerp(0.9f, 1f, Timer);
                 if(progressBar.fillAmount >= 1f)
                 {
                     op.allowSceneActivation = true;
+                    jb.StartAudio();
                     yield break;
                 }
             }

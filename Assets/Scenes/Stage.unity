@@ -669,7 +669,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ed15c2883522314b8ab5ee74dd79e25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AC: []
+  AC:
+  - {fileID: 8300000, guid: 9c504bce23b4f184d87b9a8cad856294, type: 3}
+  - {fileID: 8300000, guid: d6ad39a41d8d0b5468cd6db331d57033, type: 3}
 --- !u!4 &297546788
 Transform:
   m_ObjectHideFlags: 0
@@ -1937,6 +1939,17 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 297546787}
+        m_MethodName: SetMusic
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
