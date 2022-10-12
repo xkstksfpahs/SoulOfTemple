@@ -28,19 +28,19 @@ public class JukeBox : MonoBehaviour
         {
             AudioS.volume = PlayerPrefs.GetFloat("Music_Volum");
         }
-
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            SetMusic(0);
-        }
-        if (Input.GetKeyDown(KeyCode.O))
-        {
-            SetMusic(1);
-        }
     }
     private void Awake()
     {
-        DontDestroyOnLoad(gameObject);
+        var obj = FindObjectsOfType<JukeBox>();
+
+        if(obj.Length == 1)
+        {
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     public void StartAudio()

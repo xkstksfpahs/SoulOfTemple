@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject playerBody;
     [SerializeField] GameObject gameSetUI;
     [SerializeField] GameObject escUI;
+    [SerializeField] Text lifeText;
     GameObject spawnPoint;
     public bool gameSet = false;
     bool setUI = false;
@@ -28,6 +30,7 @@ public class GameManager : MonoBehaviour
         gameSetUI.transform.rotation = Quaternion.Euler(90, 0, 0);
         escUI.transform.rotation = Quaternion.Euler(90, 0, 0);
         ReRound = "Stage" + gameSetUI.GetComponent<GameSetComponent>().stageNumber.ToString();
+        lifeText.text = "X" + life.ToString();
     }
 
     // Update is called once per frame
@@ -87,6 +90,7 @@ public class GameManager : MonoBehaviour
             var go = PlayerObjPool.GetObject();//Instantiate(playerBody);
             go.transform.position = spawnPoint.transform.position;
             go.transform.rotation = spawnPoint.transform.rotation;
+            lifeText.text = "X" + life.ToString();
         }
     }
 
