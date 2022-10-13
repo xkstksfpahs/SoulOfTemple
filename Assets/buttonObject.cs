@@ -7,10 +7,12 @@ public class buttonObject : MonoBehaviour
     bool isClick = false;
     SpriteRenderer sr;
     public int stageNum;
+    StageGameManager sgm;
     // Start is called before the first frame update
     void Start()
     {
         sr = GetComponent<SpriteRenderer>();
+        sgm = GameObject.Find("StageGameManager").GetComponent<StageGameManager>();
     }
 
     // Update is called once per frame
@@ -33,6 +35,9 @@ public class buttonObject : MonoBehaviour
 
     public void Click()
     {
-        isClick = true;
+        if (sgm.isStage == false && sgm.Cut.color.a < 0.1f)
+        {
+            isClick = true;
+        }
     }
 }
