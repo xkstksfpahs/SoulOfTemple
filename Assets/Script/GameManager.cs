@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
     public static GameManager gm;
 
     public int life;
-    [SerializeField] int leftLife;
+    public int leftLife;
     [SerializeField] GameObject playerBody;
     [SerializeField] GameObject gameSetUI;
     [SerializeField] GameObject escUI;

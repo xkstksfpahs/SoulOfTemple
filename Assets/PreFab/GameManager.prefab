@@ -44,7 +44,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   life: 3
+  leftLife: 1
   playerBody: {fileID: 7129742159046789579, guid: 145ddd65ced090846817c9fba13c4737,
     type: 3}
   gameSetUI: {fileID: 0}
+  escUI: {fileID: 0}
+  lifeText: {fileID: 0}
   gameSet: 0
+  isItem: 0
+  esc: 0
