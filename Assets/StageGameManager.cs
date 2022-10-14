@@ -13,7 +13,10 @@ public class StageGameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        //PlayerPrefs.SetInt("isStage", 1);
+        if (PlayerPrefs.GetInt("isStage") == 1) isStage = true;
+        else if (PlayerPrefs.GetInt("isStage") == 0) isStage = false;
+        TitleUI.SetActive(isStage);
     }
 
     // Update is called once per frame
@@ -27,6 +30,14 @@ public class StageGameManager : MonoBehaviour
     {
         if (CanClick == false)
         {
+            if(num == true)
+            {
+                PlayerPrefs.SetInt("isStage", 1);
+            }
+            else if(num == false)
+            {
+                PlayerPrefs.SetInt("isStage", 0);
+            }
             isStage = num;
             CanClick = true;
             StartCoroutine(UIChange());
@@ -60,4 +71,14 @@ public class StageGameManager : MonoBehaviour
         Cut.color = new Color(0, 0, 0, 0);
         CanClick = false;
     }
+    //IEnumerator GameStartUIChange()
+    //{
+    //    for (int i = 0; i < 100; i++)
+    //    {
+    //        Acolor += 0.01f;
+    //        Cut.color = new Color(0, 0, 0, Acolor);
+    //        yield return new WaitForSeconds(0.01f);
+    //    }
+    //    yield return new WaitForSeconds(0.5f);
+    //}
 }

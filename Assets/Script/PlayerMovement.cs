@@ -1,12 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] GameObject DeadBody;
     [SerializeField] GameObject playerBody;
     [SerializeField] float jump;
+    [SerializeField] float nomalSpeed;
+    [SerializeField] Image Stamina;
     jumpTrigger jt;
     public bool isGround;
     public bool oil = false;
@@ -16,6 +19,9 @@ public class PlayerMovement : MonoBehaviour
     Vector3 platformPos;
     Vector3 distance;
     float h;
+    float totalSpeed, runSpeed;
+    float StaminaValue;
+    bool canRun;
 
     [SerializeField] float power;
 
@@ -25,12 +31,14 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         isGround = true;
         jt = GetComponentInChildren<jumpTrigger>();
+        StaminaValue = 0.7f;
     }
 
     // Update is called once per frame
     void Update()
     {
         if (GameManager.gm.gameSet || GameManager.gm.esc) return;
+        StaminaComponent();
         Move();
         ElevatorPlatform();
 
@@ -44,10 +52,18 @@ public class PlayerMovement : MonoBehaviour
     void Move()
     {
         //ad혹은 방향키 좌우 입력으로 움직임
-        h = Input.GetAxis("Horizontal"); 
-        if (h > 0) transform.localScale = new Vector3(-1, 1, 1);
-        else if (h < 0) transform.localScale = new Vector3(1, 1, 1);
-        transform.Translate(new Vector3(h, 0, 0) * Time.deltaTime);
+        h = Input.GetAxis("Horizontal");
+        if (h > 0)
+        {
+            transform.localScale = new Vector3(-1, 1, 1);
+            totalSpeed = h + runSpeed;
+        }
+        else if (h < 0)
+        {
+            transform.localScale = new Vector3(1, 1, 1);
+            totalSpeed = h - runSpeed;
+        }
+        transform.Translate(new Vector3(totalSpeed, 0, 0) * Time.deltaTime);
 
         //스페이스바를 눌러 점프
         if (Input.GetKeyDown(KeyCode.Space) && isGround && oil == false) 
@@ -80,6 +96,54 @@ public class PlayerMovement : MonoBehaviour
         {
             if(isGround && h == 0)
             transform.position = elePlat.transform.position - distance;
+        }
+    }
+
+    void StaminaComponent()
+    {
+        Stamina.transform.position = Camera.main.WorldToScreenPoint(transform.position + new Vector3(-0.5f, 0.5f, 0));
+        Stamina.fillAmount = StaminaValue;
+        if (StaminaValue < 1)
+        {
+            StaminaValue += Time.unscaledDeltaTime / 10;
+            Stamina.color = new Color(1, 1, 1, 1);
+        }
+        else if (StaminaValue >= 1)
+        {
+            StaminaValue = 1;
+        }
+        if (StaminaValue <= 0)
+        {
+            StaminaValue = 0;
+            runSpeed = 0;
+            canRun = false;
+        }
+        if (StaminaValue <= 0.25f)
+        {
+            Stamina.color = new Color(1, 0, 0, 1);
+        }
+        else
+        {
+            Stamina.color = new Color(1, 1, 1, 1);
+            canRun = true;
+        }
+        if (StaminaValue == 1)
+        {
+            Stamina.color = new Color(1, 1, 1, 0);
+        }
+
+
+        if (Input.GetKeyDown(KeyCode.LeftShift) && canRun == true)
+        {
+            runSpeed = 1;
+        }
+        else if (Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            runSpeed = 0;
+        }
+        if (Input.GetKey(KeyCode.LeftShift) && StaminaValue > 0 && canRun == true)
+        {
+            StaminaValue -= Time.unscaledDeltaTime / 2;
         }
     }
     private void OnCollisionExit2D(Collision2D collision)
