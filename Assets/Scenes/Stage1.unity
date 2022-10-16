@@ -486,7 +486,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -1
-  m_Sprite: {fileID: 21300000, guid: 6e8a7cc72a3ea1b479247c995f082ac1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4b0b148cec2024444b1fcfe8760d5adb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -577,6 +577,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SpawnPoint
+      objectReference: {fileID: 0}
+    - target: {fileID: 6103135554944543278, guid: fba2875d0dd217c4c999aa52d66d170f,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fba2875d0dd217c4c999aa52d66d170f, type: 3}
@@ -1164,6 +1169,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7129742157571390617, guid: 145ddd65ced090846817c9fba13c4737,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7129742158120663619, guid: 145ddd65ced090846817c9fba13c4737,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7129742158170910292, guid: 145ddd65ced090846817c9fba13c4737,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7129742159046789579, guid: 145ddd65ced090846817c9fba13c4737,
         type: 3}
       propertyPath: m_Name
