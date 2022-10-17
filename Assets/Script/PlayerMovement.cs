@@ -25,6 +25,8 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] float power;
 
+    Animator anim;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,6 +34,8 @@ public class PlayerMovement : MonoBehaviour
         isGround = true;
         jt = GetComponentInChildren<jumpTrigger>();
         StaminaValue = 0.7f;
+        anim = GetComponent<Animator>();
+        //anim.SetBool("Walk", true);
     }
 
     // Update is called once per frame
@@ -46,6 +50,15 @@ public class PlayerMovement : MonoBehaviour
         {
             //왼쪽 컨트롤을 눌러 사망
             Dead();
+        }
+
+        if(h == 0)
+        {
+            anim.SetBool("Walk", false);
+        }
+        else
+        {
+            anim.SetBool("Walk", true);
         }
     }
 
