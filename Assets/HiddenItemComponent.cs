@@ -11,17 +11,22 @@ public class HiddenItemComponent : MonoBehaviour
     bool TupFdown = false;
     Vector2 Dest = new Vector2(0, 0);
     float Timer = 1;
+
+    AudioSource ac;
+    [SerializeField] AudioClip eatClip;
+    SpriteRenderer itemImage;
+
+    private void Start()
+    {
+        ac = GetComponent<AudioSource>();
+        itemImage = GetComponent<SpriteRenderer>();
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
-            Destroy(parent.gameObject);
+            StartCoroutine(DestGameObject());
         }
-    }
-
-    private void OnDestroy()
-    {
-        GameManager.gm.isItem = true;
     }
     private void Update()
     {
@@ -46,5 +51,14 @@ public class HiddenItemComponent : MonoBehaviour
             num = 1;
             transform.position = Vector2.SmoothDamp(transform.position, AtoB[num].transform.position, ref Dest, Speed);
         }
+    }
+
+    IEnumerator DestGameObject()
+    {
+        GameManager.gm.isItem = true;
+        ac.PlayOneShot(eatClip);
+        itemImage.color = new Color(1, 1, 1, 0);
+        yield return new WaitForSeconds(1.5f);
+        Destroy(parent.gameObject);
     }
 }
