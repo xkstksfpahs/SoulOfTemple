@@ -17,6 +17,7 @@ TagManager:
   - Potal
   - HiddenItem
   - Pill
+  - Floor
   layers:
   - Default
   - TransparentFX

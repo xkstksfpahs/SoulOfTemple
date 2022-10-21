@@ -1,13 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class FloorObjectPool : MonoBehaviour
 {
     public static FloorObjectPool FOP;
     [SerializeField] GameObject FloorClone;
 
-    private Queue<SpriteRenderer> poolingObjQueue = new Queue<SpriteRenderer>();
+    private Queue<Image> poolingObjQueue = new Queue<Image>();
     // Start is called before the first frame update
     void Start()
     {
@@ -19,9 +20,9 @@ public class FloorObjectPool : MonoBehaviour
         Initalize(10);
     }
 
-    private SpriteRenderer CreateNewObject()
+    private Image CreateNewObject()
     {
-        var newObj = Instantiate(FloorClone, transform).GetComponent<SpriteRenderer>();
+        var newObj = Instantiate(FloorClone, transform).GetComponent<Image>();
         newObj.gameObject.SetActive(false);
         return newObj;
     }
@@ -34,7 +35,7 @@ public class FloorObjectPool : MonoBehaviour
         }
     }
 
-    public static SpriteRenderer GetObject()
+    public static Image GetObject()
     {
         if(FOP.poolingObjQueue.Count > 0)
         {
@@ -52,7 +53,7 @@ public class FloorObjectPool : MonoBehaviour
         }
     }
 
-    public static void ReturnObject(SpriteRenderer sr)
+    public static void ReturnObject(Image sr)
     {
         sr.gameObject.SetActive(false);
         sr.transform.SetParent(FOP.transform);
