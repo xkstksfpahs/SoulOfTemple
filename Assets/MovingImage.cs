@@ -12,7 +12,7 @@ public class MovingImage : MonoBehaviour
     [SerializeField] GameObject[] SpawnPoint;
 
 
-    float TempleSpeed = 1;
+    float TempleSpeed = 0.6f;
     float FloorSpeed = 0.3f;
 
     public bool floorSpawn;
