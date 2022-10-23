@@ -6,7 +6,7 @@ public class BallComponent : MonoBehaviour
 {
     Rigidbody2D rb;
     float mainX,stopSpeed = 0.5f;
-    float power;
+    float power, fallPower;
     [SerializeField] float spd;
     [SerializeField] bool isResistance;
     bool ResCom = false;
@@ -22,8 +22,10 @@ public class BallComponent : MonoBehaviour
     private void Update()
     {
         power = rb.velocity.x;
+        fallPower = rb.velocity.y;
         //if (isMove == true && piller.GetComponent<WindPiller>().canWind == true)
         //    PushObj(pillX);
+        Debug.Log(isMove);
     }
     private void FixedUpdate()
     {
@@ -80,9 +82,13 @@ public class BallComponent : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Player")/* && power >= 1*/)
+        if (collision.gameObject.CompareTag("Player"))
         {
             if (power >= 1 || power <= -1)
+            {
+                collision.gameObject.GetComponent<PlayerMovement>().Dead();
+            }
+            if(fallPower < -1f)
             {
                 collision.gameObject.GetComponent<PlayerMovement>().Dead();
             }
