@@ -9,7 +9,8 @@ public class WindPiller : MonoBehaviour
     [SerializeField] float ballSpeed;
     GameObject[] go;
     Animator anim;
-    
+
+    GameObject ball;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,12 +28,21 @@ public class WindPiller : MonoBehaviour
         {
             anim.SetBool("CanWind", false);
         }
+        if(canWind == true && ball != null && ball.GetComponent<BallComponent>().isMove == true)
+        {
+            ball.GetComponent<BallComponent>().piller = this.gameObject;
+            ball.GetComponent<BallComponent>().pillX = this.transform.position.x;
+        }
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
-        //if (collision.CompareTag("DeadPlayer") && canWind == true)
+        //if (collision.CompareTag("Ball"))
         //{
-        //    collision.GetComponent<DeadPlayer>().PushObj(transform.position.x, windSpeed);
+        //    if (canWind == true && collision.GetComponent<BallComponent>().isMove == true)
+        //    {
+        //        collision.GetComponent<BallComponent>().piller = this.gameObject;
+        //        collision.GetComponent<BallComponent>().pillX = this.transform.position.x;
+        //    }
         //}
     }
 
@@ -42,12 +52,20 @@ public class WindPiller : MonoBehaviour
         {
             canWind = false;
         }
+        if (collision.CompareTag("Ball"))
+        {
+            ball = collision.gameObject;
+        }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.CompareTag("SnG"))
         {
             canWind = true;
+        }
+        if (collision.CompareTag("Ball"))
+        {
+            ball = null;
         }
     }
 }

@@ -758,7 +758,7 @@ PrefabInstance:
     - target: {fileID: 4012630191733696095, guid: aa31b064e613d104c99d76160703ae63,
         type: 3}
       propertyPath: ResMaxSpeed
-      value: 0.52
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 4012630191733696095, guid: aa31b064e613d104c99d76160703ae63,
         type: 3}

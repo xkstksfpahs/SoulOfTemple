@@ -27,6 +27,18 @@ public class PanelManager : MonoBehaviour
         star.GetComponent<StarComponent>().StageClick(stageNum);
         TitleText.text = "스테이지 " + stageNum.ToString();
         ImageChose();
+
+
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            for (int i = 0; i < 7; i++)
+            {
+                string a = "Stage" + i.ToString() + "Clear";
+                PlayerPrefs.SetInt(a, 0);
+                string b = "Stage_" + i.ToString();
+                PlayerPrefs.SetInt(b, 0);
+            }
+        }
     }
 
     void ImageChose()

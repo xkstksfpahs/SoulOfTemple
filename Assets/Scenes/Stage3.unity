@@ -2144,7 +2144,7 @@ PrefabInstance:
     - target: {fileID: 6704981746873282615, guid: 0f15ef5b0ddfdb5469303ba24d26872e,
         type: 3}
       propertyPath: leftLife
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6704981746873282615, guid: 0f15ef5b0ddfdb5469303ba24d26872e,
         type: 3}

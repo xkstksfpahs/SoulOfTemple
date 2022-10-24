@@ -11,9 +11,9 @@ public class BallComponent : MonoBehaviour
     [SerializeField] bool isResistance;
     bool ResCom = false;
     [SerializeField] float ResMaxSpeed;
-    bool isMove = false;
-    float pillX;
-    GameObject piller;
+    public bool isMove = false;
+    public float pillX;
+    public GameObject piller;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,7 +25,7 @@ public class BallComponent : MonoBehaviour
         fallPower = rb.velocity.y;
         //if (isMove == true && piller.GetComponent<WindPiller>().canWind == true)
         //    PushObj(pillX);
-        Debug.Log(isMove);
+        //Debug.Log(isMove);
     }
     private void FixedUpdate()
     {
@@ -102,6 +102,7 @@ public class BallComponent : MonoBehaviour
             isMove = true;
             pillX = collision.gameObject.transform.position.x;
             piller = collision.gameObject;
+            Debug.Log(collision);
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
