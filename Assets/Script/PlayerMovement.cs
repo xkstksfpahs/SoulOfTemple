@@ -10,6 +10,10 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float jump;
     [SerializeField] float nomalSpeed;
     [SerializeField] Image Stamina;
+    AudioSource audioS;
+    [SerializeField] AudioClip[] FootStep;
+    [SerializeField] AudioClip jumpSound;
+    float FootStepTempo = 0;
     jumpTrigger jt;
     public bool isGround;
     public bool oil = false;
@@ -35,6 +39,7 @@ public class PlayerMovement : MonoBehaviour
         jt = GetComponentInChildren<jumpTrigger>();
         StaminaValue = 0.7f;
         anim = GetComponent<Animator>();
+        audioS = GetComponent<AudioSource>();
         //anim.SetBool("Walk", true);
     }
 
@@ -46,20 +51,23 @@ public class PlayerMovement : MonoBehaviour
         Move();
         ElevatorPlatform();
 
+        audioS.volume = PlayerPrefs.GetFloat("Effect_Volum");
+
         if (Input.GetKeyDown(KeyCode.LeftControl))
         {
             //왼쪽 컨트롤을 눌러 사망
             Dead();
         }
 
-        if(h == 0)
-        {
-            anim.SetBool("Walk", false);
-        }
-        else
+        if(h != 0 && isGround == true)
         {
             anim.SetBool("Walk", true);
         }
+        else
+        {
+            anim.SetBool("Walk", false);
+        }
+        Debug.Log(isGround);
     }
 
     void Move()
@@ -70,11 +78,43 @@ public class PlayerMovement : MonoBehaviour
         {
             transform.localScale = new Vector3(-1, 1, 1);
             totalSpeed = h + runSpeed;
+
+            if (isGround == true)
+            {
+                if (runSpeed == 0)
+                    FootStepTempo -= Time.unscaledDeltaTime;
+                else if (runSpeed == 1)
+                    FootStepTempo -= Time.unscaledDeltaTime * 2;
+                if (FootStepTempo < 0)
+                {
+                    int i = Random.Range(0, FootStep.Length);
+                    audioS.PlayOneShot(FootStep[i]);
+                    FootStepTempo = 0.7f;
+                }
+            }
         }
         else if (h < 0)
         {
             transform.localScale = new Vector3(1, 1, 1);
             totalSpeed = h - runSpeed;
+
+            if (isGround == true)
+            {
+                if (runSpeed == 0)
+                    FootStepTempo -= Time.unscaledDeltaTime;
+                else if (runSpeed == 1)
+                    FootStepTempo -= Time.unscaledDeltaTime * 2;
+                if (FootStepTempo < 0)
+                {
+                    int i = Random.Range(0, FootStep.Length);
+                    audioS.PlayOneShot(FootStep[i]);
+                    FootStepTempo = 0.7f;
+                }
+            }
+        }
+        else if(h == 0)
+        {
+            FootStepTempo = 0;
         }
         transform.Translate(new Vector3(totalSpeed, 0, 0) * Time.deltaTime);
 
@@ -84,6 +124,7 @@ public class PlayerMovement : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, jump);
             isGround = false;
             jt.Jump();
+            audioS.PlayOneShot(jumpSound);
         }
     }
 

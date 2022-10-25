@@ -14,10 +14,14 @@ public class BallComponent : MonoBehaviour
     public bool isMove = false;
     public float pillX;
     public GameObject piller;
+    AudioSource ac;
+    [SerializeField] AudioClip rolling;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        ac = GetComponent<AudioSource>();
+        ac.clip = rolling;
     }
     private void Update()
     {
@@ -26,6 +30,16 @@ public class BallComponent : MonoBehaviour
         //if (isMove == true && piller.GetComponent<WindPiller>().canWind == true)
         //    PushObj(pillX);
         //Debug.Log(isMove);
+
+        //이부분 만들고있음
+        if(power != 0)
+        {
+            ac.Play();
+        }
+        else
+        {
+            ac.Pause();
+        }
     }
     private void FixedUpdate()
     {

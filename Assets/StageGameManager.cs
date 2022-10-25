@@ -33,6 +33,7 @@ public class StageGameManager : MonoBehaviour
             if(num == true)
             {
                 PlayerPrefs.SetInt("isStage", 1);
+                Debug.Log("이건가?");
             }
             else if(num == false)
             {
@@ -50,6 +51,7 @@ public class StageGameManager : MonoBehaviour
     public void ExitGame()
     {
         Application.Quit();
+        PlayerPrefs.SetInt("isStage", 1);
     }
 
     IEnumerator UIChange()

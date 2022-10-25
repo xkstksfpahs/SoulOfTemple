@@ -17,6 +17,11 @@ public class JukeBox : MonoBehaviour
             PlayerPrefs.SetFloat("First", 1);
             PlayerPrefs.SetFloat("Music_Volum", 1);
         }
+        if(PlayerPrefs.GetInt("First_Effect") != 1)
+        {
+            PlayerPrefs.SetInt("First_Effect", 1);
+            PlayerPrefs.SetFloat("Effect_Volum",1);
+        }
         AudioS.clip = AC[0];
         AudioS.Play();
     }
@@ -64,7 +69,7 @@ public class JukeBox : MonoBehaviour
         AudioS.Pause();
         AudioS.clip = AC[number];
         //AudioS.Play();
-        Debug.Log("응애");
+        Debug.Log(this);
         AudioSet = false;
     }
 }

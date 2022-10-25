@@ -37,6 +37,8 @@ public class HiddenItemComponent : MonoBehaviour
             TupFdown = !TupFdown;
             Timer = 1;
         }
+
+        ac.volume = PlayerPrefs.GetFloat("Effect_Volum");
     }
 
     void Shake()

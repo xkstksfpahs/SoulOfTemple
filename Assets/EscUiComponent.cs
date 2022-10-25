@@ -10,12 +10,14 @@ public class EscUiComponent : MonoBehaviour
     bool trigger = false;
     JukeBox jb;
     [SerializeField] Slider SoundSlider;
+    [SerializeField] Slider SoundEffectSlider;
     // Start is called before the first frame update
     void Start()
     {
         options.SetActive(false);
         jb = GameObject.Find("JukeBox").GetComponent<JukeBox>();
         SoundSlider.value = PlayerPrefs.GetFloat("Music_Volum");
+        SoundEffectSlider.value = PlayerPrefs.GetFloat("Effect_Volum");
     }
 
     // Update is called once per frame
@@ -49,5 +51,10 @@ public class EscUiComponent : MonoBehaviour
     public void SSlider()
     {
         PlayerPrefs.SetFloat("Music_Volum", SoundSlider.value);
+    }
+
+    public void ESlider()
+    {
+        PlayerPrefs.SetFloat("Effect_Volum", SoundEffectSlider.value);
     }
 }
