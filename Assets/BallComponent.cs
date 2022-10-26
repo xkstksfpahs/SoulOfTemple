@@ -16,6 +16,11 @@ public class BallComponent : MonoBehaviour
     public GameObject piller;
     AudioSource ac;
     [SerializeField] AudioClip rolling;
+    [SerializeField] AudioClip falling;
+    bool ado = false;
+    bool isjump = false, ismove = false;
+
+    float ballSound;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,19 +32,46 @@ public class BallComponent : MonoBehaviour
     {
         power = rb.velocity.x;
         fallPower = rb.velocity.y;
-        //if (isMove == true && piller.GetComponent<WindPiller>().canWind == true)
-        //    PushObj(pillX);
-        //Debug.Log(isMove);
+        jump();
 
-        //이부분 만들고있음
-        if(power != 0)
+        if (ado == true && power >= 0.1f || power <=-0.1f)
         {
             ac.Play();
+            ado = false;
         }
-        else
+        else if (power <=0.1f && power >=-0.1f && ado == false)
         {
             ac.Pause();
+            ado = true;
         }
+
+        if (power > 0 && !isjump)
+        {
+            if (power < 1)
+            {
+                ballSound = power;
+            }
+            else if (power >= 1)
+            {
+                ballSound = 1;
+            }
+        }
+        else if (power < 0 && !isjump)
+        {
+            if (power > -1f)
+            {
+                ballSound = power*-1;
+            }
+            else if (power <= -1f)
+            {
+                ballSound = 1;
+            }
+        }
+        if (isjump) ballSound = 1;
+        ac.volume = ballSound * PlayerPrefs.GetFloat("Effect_Volum");
+
+        Debug.Log(ismove);
+        Debug.Log(isjump);
     }
     private void FixedUpdate()
     {
@@ -107,6 +139,11 @@ public class BallComponent : MonoBehaviour
                 collision.gameObject.GetComponent<PlayerMovement>().Dead();
             }
         }
+        if(ismove == true || isjump == true)
+        {
+            ac.PlayOneShot(falling);
+            Debug.Log("부딪침");
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -116,7 +153,6 @@ public class BallComponent : MonoBehaviour
             isMove = true;
             pillX = collision.gameObject.transform.position.x;
             piller = collision.gameObject;
-            Debug.Log(collision);
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
@@ -126,5 +162,20 @@ public class BallComponent : MonoBehaviour
             isMove = false;
             piller = null;
         }
+    }
+
+    void jump()
+    {
+        if (power > 0.5f || power < -0.5f)
+        {
+            ismove = true;
+        }
+        else ismove = false;
+
+        if (fallPower < -1)
+        {
+            isjump = true;
+        }
+        else isjump = false;
     }
 }

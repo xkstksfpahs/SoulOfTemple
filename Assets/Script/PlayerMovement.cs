@@ -67,7 +67,6 @@ public class PlayerMovement : MonoBehaviour
         {
             anim.SetBool("Walk", false);
         }
-        Debug.Log(isGround);
     }
 
     void Move()
