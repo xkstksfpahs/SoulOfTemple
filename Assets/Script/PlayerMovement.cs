@@ -51,15 +51,8 @@ public class PlayerMovement : MonoBehaviour
             h = 0;
             return;
         }
-
-        //if (Input.GetKey(KeyCode.Q))
-        //{
-        //    transform.Translate(0, 0, 0);
-        //    Debug.Log("누름");
-        //}
-
-        StaminaComponent();
         Move();
+        StaminaComponent();
         ElevatorPlatform();
 
         audioS.volume = PlayerPrefs.GetFloat("Effect_Volum");
@@ -78,6 +71,11 @@ public class PlayerMovement : MonoBehaviour
         {
             anim.SetBool("Walk", false);
         }
+    }
+    public IEnumerator mm()
+    {
+        transform.Translate(new Vector3(totalSpeed, 0, 0) * Time.deltaTime);
+        yield return new WaitForSeconds(0.1f);
     }
 
     void Move()
@@ -102,6 +100,7 @@ public class PlayerMovement : MonoBehaviour
                     FootStepTempo = 0.7f;
                 }
             }
+            transform.Translate(new Vector3(totalSpeed, 0, 0) * Time.deltaTime);
         }
         else if (h < 0)
         {
@@ -121,12 +120,12 @@ public class PlayerMovement : MonoBehaviour
                     FootStepTempo = 0.7f;
                 }
             }
+            transform.Translate(new Vector3(totalSpeed, 0, 0) * Time.deltaTime);
         }
         else if(h == 0)
         {
             FootStepTempo = 0;
         }
-        transform.Translate(new Vector3(totalSpeed, 0, 0) * Time.deltaTime);
 
         //스페이스바를 눌러 점프
         if (Input.GetKeyDown(KeyCode.Space) && isGround && oil == false) 
