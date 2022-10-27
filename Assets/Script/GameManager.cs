@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject gameSetUI;
     [SerializeField] GameObject escUI;
     [SerializeField] Text lifeText;
+    public AudioSource ac;
     GameObject spawnPoint;
     public bool gameSet = false;
     bool setUI = false;
@@ -36,6 +37,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        ac.volume = PlayerPrefs.GetFloat("Effect_Volum");
         if (gameSet && setUI)
         {
             gameSetUI.transform.Rotate(new Vector3(-200, 0, 0) * Time.deltaTime);

@@ -46,7 +46,18 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameManager.gm.gameSet || GameManager.gm.esc) return;
+        if (GameManager.gm.gameSet || GameManager.gm.esc)
+        {
+            h = 0;
+            return;
+        }
+
+        //if (Input.GetKey(KeyCode.Q))
+        //{
+        //    transform.Translate(0, 0, 0);
+        //    Debug.Log("누름");
+        //}
+
         StaminaComponent();
         Move();
         ElevatorPlatform();
@@ -76,9 +87,9 @@ public class PlayerMovement : MonoBehaviour
         if (h > 0)
         {
             transform.localScale = new Vector3(-1, 1, 1);
-            totalSpeed = h + runSpeed;
+            totalSpeed = h + runSpeed; //이동속도
 
-            if (isGround == true)
+            if (isGround == true) // 애니메이션 관련
             {
                 if (runSpeed == 0)
                     FootStepTempo -= Time.unscaledDeltaTime;
@@ -95,7 +106,7 @@ public class PlayerMovement : MonoBehaviour
         else if (h < 0)
         {
             transform.localScale = new Vector3(1, 1, 1);
-            totalSpeed = h - runSpeed;
+            totalSpeed = h - runSpeed; // 이동속도
 
             if (isGround == true)
             {

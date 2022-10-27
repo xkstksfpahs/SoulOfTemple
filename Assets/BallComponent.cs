@@ -27,6 +27,7 @@ public class BallComponent : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         ac = GetComponent<AudioSource>();
         ac.clip = rolling;
+        Debug.Log(GameManager.gm.ac);
     }
     private void Update()
     {
@@ -69,9 +70,6 @@ public class BallComponent : MonoBehaviour
         }
         if (isjump) ballSound = 1;
         ac.volume = ballSound * PlayerPrefs.GetFloat("Effect_Volum");
-
-        Debug.Log(ismove);
-        Debug.Log(isjump);
     }
     private void FixedUpdate()
     {
@@ -141,7 +139,7 @@ public class BallComponent : MonoBehaviour
         }
         if(ismove == true || isjump == true)
         {
-            ac.PlayOneShot(falling);
+            GameManager.gm.ac.PlayOneShot(falling);
             Debug.Log("부딪침");
         }
     }

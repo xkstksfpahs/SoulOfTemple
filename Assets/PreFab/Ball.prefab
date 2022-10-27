@@ -173,6 +173,7 @@ MonoBehaviour:
   pillX: 0
   piller: {fileID: 0}
   rolling: {fileID: 8300000, guid: 74992396e241331498d253e4e07dc887, type: 3}
+  falling: {fileID: 8300000, guid: 45355b9dec1c5464bae22d6281f0c354, type: 3}
 --- !u!58 &1649807136
 CircleCollider2D:
   m_ObjectHideFlags: 0
