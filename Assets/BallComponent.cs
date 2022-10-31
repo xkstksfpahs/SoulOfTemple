@@ -34,16 +34,23 @@ public class BallComponent : MonoBehaviour
         power = rb.velocity.x;
         fallPower = rb.velocity.y;
         jump();
+        Debug.Log(ado);
 
-        if (ado == true && power >= 0.1f || power <=-0.1f)
+        if (ado == true)
         {
-            ac.Play();
-            ado = false;
+            if ((power >= 0.1f && isjump == false) || (power <= -0.1f && isjump == false))
+            {
+                ac.Play();
+                ado = false;
+            }
         }
-        else if (power <=0.1f && power >=-0.1f && ado == false)
+        else if (ado == false)
         {
-            ac.Pause();
-            ado = true;
+            if ((power <= 0.1f || isjump == true) && (power >= -0.1f || isjump == true))
+            {
+                ac.Pause();
+                ado = true;
+            }
         }
 
         if (power > 0 && !isjump)

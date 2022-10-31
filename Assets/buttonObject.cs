@@ -11,6 +11,7 @@ public class buttonObject : MonoBehaviour
     [SerializeField] GameObject UnlockedSprite;
     bool isLocked;
     string beforeStage;
+    public int leftLife;
     // Start is called before the first frame update
     void Start()
     {
@@ -45,6 +46,7 @@ public class buttonObject : MonoBehaviour
             sr.color = new Color(1, 1, 1, 1);
 
             PanelManager.pm.stageNum = stageNum;
+            PanelManager.pm.leftLife = leftLife;
             PanelRotation.pr.ActiveOn(stageNum);
         }
     }

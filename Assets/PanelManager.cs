@@ -7,10 +7,12 @@ public class PanelManager : MonoBehaviour
 {
     public static PanelManager pm;
     public int stageNum;
+    public int leftLife;
     int imageNum;
     [SerializeField] Text TitleText;
     [SerializeField] GameObject star;
     [SerializeField] GameObject[] image;
+    [SerializeField] Text ChallText;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +28,7 @@ public class PanelManager : MonoBehaviour
     {
         star.GetComponent<StarComponent>().StageClick(stageNum);
         TitleText.text = "스테이지 " + stageNum.ToString();
+        ChallText.text = "게임 클리어하기\n\n" + leftLife.ToString() + "목숨 이상 남겨놓고 클리어하기\n\n특정 아이템을 먹고 클리어하기";
         ImageChose();
 
 

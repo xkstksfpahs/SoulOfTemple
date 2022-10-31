@@ -9,6 +9,8 @@ public class GameSetComponent : MonoBehaviour
     [SerializeField] bool[] test;
     [SerializeField] GameObject[] stars;
     [SerializeField] GameObject button;
+    [SerializeField] Text lifeText;
+    int ll;
     public int stageNumber;
     float setTime = 1f;
     float getTime;
@@ -31,6 +33,9 @@ public class GameSetComponent : MonoBehaviour
             stars[i].SetActive(false);
         }
         button.SetActive(false);
+
+        ll = GameObject.Find("GameManager").GetComponent<GameManager>().leftLife;
+        lifeText.text = "목숨을 " + ll.ToString() + "개 이상 남겨놓기";
     }
 
     // Update is called once per frame

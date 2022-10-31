@@ -1275,7 +1275,7 @@ GameObject:
   - component: {fileID: 5070842722848398855}
   - component: {fileID: 5070842722848398856}
   m_Layer: 5
-  m_Name: Text2
+  m_Name: LifeText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5079,6 +5079,7 @@ MonoBehaviour:
   - {fileID: 5070842722822555942}
   - {fileID: 5070842723477917791}
   button: {fileID: 5070842723059002281}
+  lifeText: {fileID: 5070842722848398856}
   stageNumber: 1
 --- !u!1 &5070842724313317375
 GameObject:
