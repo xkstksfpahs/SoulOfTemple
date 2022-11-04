@@ -33,12 +33,18 @@ public class ScaleComponent : MonoBehaviour
             PlayerPrefs.SetInt("Width", 1920);
             PlayerPrefs.SetInt("Vertical", 1080);
         }
-        if (PlayerPrefs.GetString("ScreenV") != "전체화면" && PlayerPrefs.GetString("ScreenV") != "창모드")
+        if (PlayerPrefs.GetString("ScreenV") == "전체화면" /*&& PlayerPrefs.GetString("ScreenV") != "창모드"*/)
         {
-            PlayerPrefs.SetString("ScreenV", "전체화면");
+            //PlayerPrefs.SetString("ScreenV", "전체화면");
             buttonT = PlayerPrefs.GetString("ScreenV");
             buttonText.text = buttonT;
             ScreenMod = true;
+        }
+        else if (PlayerPrefs.GetString("ScreenV") == "창모드")
+        {
+            buttonT = PlayerPrefs.GetString("ScreenV");
+            buttonText.text = buttonT;
+            ScreenMod = false;
         }
         Width = PlayerPrefs.GetInt("Width");
         Vertical = PlayerPrefs.GetInt("Vertical");
